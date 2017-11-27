@@ -875,6 +875,48 @@
 			<bInGeneric>1</bInGeneric>
 		</SoundData>
 		<SoundData>
+			<SoundID>SONG_DAPHNIS_CHLOE</SoundID>
+			<Filename>Sounds/Soundtrack/Modern/DaphnisChloe</Filename>
+			<LoadType>STREAMED</LoadType>
+			<bIsCompressed>1</bIsCompressed>
+			<bInGeneric>1</bInGeneric>
+		</SoundData>
+		<SoundData>
+			<SoundID>SONG_FERIA</SoundID>
+			<Filename>Sounds/Soundtrack/Modern/Feria</Filename>
+			<LoadType>STREAMED</LoadType>
+			<bIsCompressed>1</bIsCompressed>
+			<bInGeneric>1</bInGeneric>
+		</SoundData>
+		<SoundData>
+			<SoundID>SONG_LA_MER_1</SoundID>
+			<Filename>Sounds/Soundtrack/Modern/LaMer1</Filename>
+			<LoadType>STREAMED</LoadType>
+			<bIsCompressed>1</bIsCompressed>
+			<bInGeneric>1</bInGeneric>
+		</SoundData>
+		<SoundData>
+			<SoundID>SONG_LA_MER_2</SoundID>
+			<Filename>Sounds/Soundtrack/Modern/LaMer2</Filename>
+			<LoadType>STREAMED</LoadType>
+			<bIsCompressed>1</bIsCompressed>
+			<bInGeneric>1</bInGeneric>
+		</SoundData>
+		<SoundData>
+			<SoundID>SONG_LA_MER_3</SoundID>
+			<Filename>Sounds/Soundtrack/Modern/LaMer3</Filename>
+			<LoadType>STREAMED</LoadType>
+			<bIsCompressed>1</bIsCompressed>
+			<bInGeneric>1</bInGeneric>
+		</SoundData>
+		<SoundData>
+			<SoundID>SONG_RAVEL_QUARTET_1</SoundID>
+			<Filename>Sounds/Soundtrack/Modern/RavelQuartet</Filename>
+			<LoadType>STREAMED</LoadType>
+			<bIsCompressed>1</bIsCompressed>
+			<bInGeneric>1</bInGeneric>
+		</SoundData>
+		<SoundData>
 			<SoundID>SONG_ANFORTAS_WOUND</SoundID>
 			<Filename>Sounds/Soundtrack/Modern/AnfortasWound</Filename>
 			<LoadType>STREAMED</LoadType>
