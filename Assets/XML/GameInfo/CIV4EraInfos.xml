@@ -362,12 +362,21 @@
 			<iSoundtrackSpace>80</iSoundtrackSpace>
 			<bFirstSoundtrackFirst>0</bFirstSoundtrackFirst>
 			<EraInfoSoundtracks>
-				<EraInfoSoundtrack>AS2D_DAPHNIS_CHLOE</EraInfoSoundtrack>
-				<EraInfoSoundtrack>AS2D_FERIA</EraInfoSoundtrack>
 				<EraInfoSoundtrack>AS2D_LA_MER_1</EraInfoSoundtrack>
 				<EraInfoSoundtrack>AS2D_LA_MER_2</EraInfoSoundtrack>
 				<EraInfoSoundtrack>AS2D_LA_MER_3</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_PRELUDE_APRES_MIDI_FAUNE</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_DAPHNIS_CHLOE</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_FERIA</EraInfoSoundtrack>
 				<EraInfoSoundtrack>AS2D_RAVEL_QUARTET_1</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_RAVEL_QUARTET_2</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_RAVEL_QUARTET_3</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_RAVEL_QUARTET_4</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_RAVEL_PIANO_CONCERTO</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_I_GOT_RHYTHM</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_RHAPSODY_IN_BLUE</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_PLANETS_MARS</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_PLANETS_VENUS</EraInfoSoundtrack>
 			</EraInfoSoundtracks>
 			<CitySoundscapes>
 				<CitySoundscape>
