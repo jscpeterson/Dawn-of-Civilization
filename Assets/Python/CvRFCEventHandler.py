@@ -153,7 +153,10 @@ class CvRFCEventHandler:
 			utils.removeSlaves(city)
 		else:
 			utils.freeSlaves(city, iPlayer)
-					
+			
+		if city.isCapital():
+			if city.isHasRealBuilding(iAdministrativeCenter): 
+				city.setHasRealBuilding(iAdministrativeCenter, False)	
 							
 		# kill Seljuks
 		#if iOwner == iSeljuks and gc.getPlayer(iSeljuks).isAlive() and gc.getGame().getGameTurnYear() >= 1250:
@@ -308,6 +311,12 @@ class CvRFCEventHandler:
 			
 			city.setHasRealBuilding(iTemple + 4*gc.getPlayer(iOwner).getStateReligion(), True)
 			
+		if iOwner == iPortugal and tCity == Areas.getCapital(iPortugal) and gc.getGame().getGameTurn() <= getTurnForYear(tBirth[iPortugal]) + 3:
+			city.setPopulation(5)
+			
+			for iBuilding in [iLibrary, iMarket, iHarbor, iLighthouse, iForge, iWalls, iTemple+4*gc.getPlayer(iPortugal).getStateReligion()]:
+				city.setHasRealBuilding(iBuilding, True)
+			
 		if iOwner == iNetherlands and tCity == Areas.getCapital(iNetherlands) and gc.getGame().getGameTurn() <= getTurnForYear(1580)+3:
 			city.setPopulation(9)
 			
@@ -417,7 +426,7 @@ class CvRFCEventHandler:
 		if bCapitulated and iVassal == iChina and iMaster == iMongolia:
 			utils.setReborn(iMongolia, True)
 		
-		dc.onVassalState(iVassal)
+		dc.onVassalState(iMaster, iVassal)
 
 	def onRevolution(self, argsList):
 		'Called at the start of a revolution'
@@ -428,8 +437,7 @@ class CvRFCEventHandler:
 		if iPlayer < iNumPlayers:
 			dc.onRevolution(iPlayer)
 			
-		if not gc.getPlayer(iPlayer).isColonialSlavery():
-			utils.clearSlaves(iPlayer)
+		utils.checkSlaves(iPlayer)
 			
 		if iPlayer in [iEgypt]:
 			cnm.onRevolution(iPlayer)
@@ -542,17 +550,6 @@ class CvRFCEventHandler:
 				if plot.getOwner() == iOwner and not plot.isWater():
 					plot.setWithinGreatWall(True)
 					
-		# Leoreth: La Mezquita
-		#if iBuildingType == iMezquita:
-		#	lGPList = [0, 0, 0, 0, 0, 0, 0]
-		#	for city in utils.getCityList(iOwner):
-		#		for i in range(7):
-		#			iSpecialistUnit = utils.getUniqueUnit(iOwner, iGreatProphet + i)
-		#			lGPList[i] += city.getGreatPeopleUnitProgress(iSpecialistUnit)
-		#	iGPType = utils.getUniqueUnit(iOwner, iGreatProphet + utils.getHighestIndex(lGPList))
-		#	utils.makeUnit(iGPType, iOwner, tCity, 1)
-		#	CyInterface().addMessage(iOwner, False, iDuration, CyTranslator().getText("TXT_KEY_MEZQUITA_FREE_GP", (gc.getUnitInfo(iGPType).getText(), city.getName())), "", InterfaceMessageTypes.MESSAGE_TYPE_MINOR_EVENT, gc.getUnitInfo(iGPType).getButton(), ColorTypes(iWhite), city.getX(), city.getY(), True, True)
-
 	def onPlotFeatureRemoved(self, argsList):
 		plot, city, iFeature = argsList
 		
@@ -796,5 +793,23 @@ class CvRFCEventHandler:
 			print("SHIFT-ALT-S") #increases stability by one level
 			utils.setStabilityLevel(utils.getHumanID(), min(5, utils.getStabilityLevel(utils.getHumanID()) + 1))
 			
-		if eventType == self.EventKeyDown and theKey == int(InputTypes.KB_W) and self.eventManager.bCtrl and CyGame().GetWorldBuilderMode():
-			utils.removeStabilityOverlay() # Remove AI forbidden area overlay when exiting WB by ctrl+w
+			
+		if eventType == self.EventKeyDown and theKey == int(InputTypes.KB_V) and self.eventManager.bCtrl and self.eventManager.bShift:
+			for iPlayer in range(iNumTotalPlayersB):
+				pPlayer = gc.getPlayer(iPlayer)
+				
+				#pPlayer.initCity(71, 34)
+				#city = gc.getMap().plot(71, 34).getPlotCity()
+				
+				lEras = [iAncient, iMedieval, iIndustrial]
+				for iEra in lEras:
+					pPlayer.setCurrentEra(iEra)
+					for iUnit in range(iNumUnits):
+						print (str(gc.getCivilizationInfo(pPlayer.getCivilizationType()).getShortDescription(0)))
+						print (str(gc.getEraInfo(iEra).getDescription()))
+						print (str(gc.getUnitInfo(iUnit).getDescription()))
+						utils.makeUnit(iUnit, iPlayer, (68, 33), 1)
+						gc.getMap().plot(68, 33).getUnit(0).kill(False, iBarbarian)
+						#print ("Button")
+						#city.pushOrder(OrderTypes.ORDER_TRAIN, iUnit , -1, False, True, False, True)
+				#city.getPlotCity().kill()

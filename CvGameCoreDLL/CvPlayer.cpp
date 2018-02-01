@@ -5506,9 +5506,30 @@ bool CvPlayer::canFound(int iX, int iY, bool bTestVisible) const
 
 	if (pPlot->getFeatureType() != NO_FEATURE && getID() != CONGO)	//Leoreth: Congolese UP: can found in jungle
 	{
-		if (GC.getFeatureInfo(pPlot->getFeatureType()).isNoCity() && pPlot->getArea() != NULL && GC.getMap().getArea(pPlot->getArea())->getNumTiles() > 1) // Leoreth: can always found on one tile islands
+		if (GC.getFeatureInfo(pPlot->getFeatureType()).isNoCity())
 		{
-			return false;
+			// Leoreth: can always found on one tile islands
+			if (pPlot->getArea() != NULL && GC.getMap().getArea(pPlot->getArea())->getNumTiles() > 1)
+			{
+				bool bCanRemove = false;
+
+				for (int iI = 0; iI < GC.getNumBuildInfos(); iI++)
+				{
+					if (GC.getBuildInfo((BuildTypes)iI).isFeatureRemove(pPlot->getFeatureType()))
+					{
+						if (canBuild(pPlot, (BuildTypes)iI))
+						{
+							bCanRemove = true;
+							break;
+						}
+					}
+				}
+
+				if (!bCanRemove)
+				{
+					return false;
+				}
+			}
 		}
 	}
 
@@ -6209,56 +6230,26 @@ bool CvPlayer::canConstruct(BuildingTypes eBuilding, bool bContinue, bool bTestV
 	//Leoreth: don't allow UHV wonders before the respective human civ has spawned and some turns after
 	if (!isHuman())
 	{
-		if (eBuilding == NOTRE_DAME || eBuilding == EIFFEL_TOWER)
-		{
-			if (GET_PLAYER((PlayerTypes)FRANCE).isHuman())
-			{
-				if (GC.getGameINLINE().getGameTurn() < GET_PLAYER(FRANCE).getBirthTurn()+5)
-				{
-					return false;
-				}
-			}
-		}
-		else if (eBuilding == BLUE_MOSQUE || eBuilding == TOPKAPI_PALACE)
-		{
-			if (GET_PLAYER((PlayerTypes)TURKEY).isHuman())
-			{
-				if (GC.getGameINLINE().getGameTurn() < GET_PLAYER(TURKEY).getBirthTurn()+5)
-				{
-					return false;
-				}
-			}
-		}
-		else if (eBuilding == UNITED_NATIONS || eBuilding == PENTAGON || eBuilding == STATUE_OF_LIBERTY)
-		{
-			if (GET_PLAYER((PlayerTypes)AMERICA).isHuman())
-			{
-				if (GC.getGameINLINE().getGameTurn() < GET_PLAYER(AMERICA).getBirthTurn()+5)
-				{
-					return false;
-				}
-			}
-		}
-		else if (eBuilding == SAN_MARCO_BASILICA || eBuilding == SISTINE_CHAPEL || eBuilding == LEANING_TOWER)
-		{
-			if (GET_PLAYER((PlayerTypes)ITALY).isHuman())
-			{
-				if (GC.getGameINLINE().getGameTurn() < GET_PLAYER(ITALY).getBirthTurn()+5)
-				{
-					return false;
-				}
-			}
-		}
-		else if (eBuilding == UNIVERSITY_OF_SANKORE)
-		{
-			if (GET_PLAYER((PlayerTypes)MALI).isHuman())
-			{
-				if (GC.getGameINLINE().getGameTurn() < getTurnForYear(1400))
-				{
-					return false;
-				}
-			}
-		}
+		if (isHumanVictoryWonder(eBuilding, NOTRE_DAME, FRANCE)) return false;
+		else if (isHumanVictoryWonder(eBuilding, EIFFEL_TOWER, FRANCE)) return false;
+		else if (isHumanVictoryWonder(eBuilding, STATUE_OF_LIBERTY, FRANCE)) return false;
+
+		else if (isHumanVictoryWonder(eBuilding, BLUE_MOSQUE, TURKEY)) return false;
+		else if (isHumanVictoryWonder(eBuilding, TOPKAPI_PALACE, TURKEY)) return false;
+
+		else if (isHumanVictoryWonder(eBuilding, UNITED_NATIONS, AMERICA)) return false;
+		else if (isHumanVictoryWonder(eBuilding, PENTAGON, AMERICA)) return false;
+		else if (isHumanVictoryWonder(eBuilding, STATUE_OF_LIBERTY, AMERICA)) return false;
+
+		else if (isHumanVictoryWonder(eBuilding, SAN_MARCO_BASILICA, ITALY)) return false;
+		else if (isHumanVictoryWonder(eBuilding, SISTINE_CHAPEL, ITALY)) return false;
+		else if (isHumanVictoryWonder(eBuilding, LEANING_TOWER, ITALY)) return false;
+
+		else if (isHumanVictoryWonder(eBuilding, UNIVERSITY_OF_SANKORE, MALI)) return false;
+
+		else if (isHumanVictoryWonder(eBuilding, LA_MEZQUITA, MOORS)) return false;
+
+		else if (isHumanVictoryWonder(eBuilding, GREAT_COTHON, PHOENICIA)) return false;
 	}
 
 	return true;
@@ -7372,7 +7363,8 @@ int CvPlayer::calculatePreInflatedCosts() const
 
 int CvPlayer::calculateInflationRate() const
 {
-	int iTurns = ((GC.getGameINLINE().getGameTurn() + GC.getGameINLINE().getElapsedGameTurns()) / 2);
+	//int iTurns = ((GC.getGameINLINE().getGameTurn() + GC.getGameINLINE().getElapsedGameTurns()) / 2);
+	int iTurns = GC.getGameINLINE().getGameTurn();
 
 	if (GC.getGameINLINE().getMaxTurns() > 0)
 	{
@@ -7386,8 +7378,7 @@ int CvPlayer::calculateInflationRate() const
 		return 0;
 	}
 
-	// Leoreth: no inflation for America in the beginning to help its start
-	if (getID() == AMERICA && GC.getGameINLINE().getGameTurnYear() < 1840)
+	if (GC.getGameINLINE().getGameTurn() <= getTurnForYear(GC.getCivilizationInfo(getCivilizationType()).getStartingYear()) + GC.getGameSpeedInfo(GC.getGameINLINE().getGameSpeedType()).getInflationOffset() / 2)
 	{
 		return 0;
 	}
@@ -8245,7 +8236,7 @@ void CvPlayer::foundReligion(ReligionTypes eReligion, ReligionTypes eSlotReligio
 
 	for (pLoopCity = firstCity(&iLoop); pLoopCity != NULL; pLoopCity = nextCity(&iLoop))
 	{
-		if (pLoopCity->plot()->getSpreadFactor(eReligion) == REGION_SPREAD_CORE || eReligion == PROTESTANTISM)
+		if (pLoopCity->plot()->getSpreadFactor(eReligion) >= REGION_SPREAD_HISTORICAL || eReligion == PROTESTANTISM)
 		{
 			iValue = 10;
 			iValue += pLoopCity->getPopulation();
@@ -10171,7 +10162,7 @@ int CvPlayer::getExtraHappiness() const
 	{
 		int iCivicHappiness = 0;
 
-		if (getCivics(CIVICOPTION_GOVERNMENT) == CIVIC_REPUBLIC) iCivicHappiness += 2;
+		if (getCivics(CIVICOPTION_GOVERNMENT) == CIVIC_DEMOCRACY) iCivicHappiness += 2;
 		if (getCivics(CIVICOPTION_LEGITIMACY) == CIVIC_CONSTITUTION) iCivicHappiness += 2;
 		if (getCivics(CIVICOPTION_SOCIETY) == CIVIC_INDIVIDUALISM) iCivicHappiness += 2;
 		if (getCivics(CIVICOPTION_ECONOMY) == CIVIC_FREE_ENTERPRISE) iCivicHappiness += 2;
@@ -25391,7 +25382,7 @@ bool CvPlayer::canFoundReligion(ReligionTypes eReligion, TechTypes eTechDiscover
 	CvCity* pCity;
 	for (pCity = firstCity(&iLoop); pCity != NULL; pCity = nextCity(&iLoop))
 	{
-		if (pCity->plot()->getSpreadFactor(eReligion) == REGION_SPREAD_CORE)
+		if (pCity->plot()->getSpreadFactor(eReligion) >= REGION_SPREAD_CORE)
 		{
 			return true;
 		}

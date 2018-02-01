@@ -1072,7 +1072,7 @@ lEnemyCivsOnSpawn = [
 [], #India
 [], #Carthage
 [], #Polynesia
-[iBabylonia,iBabylonia,iGreece,iCarthage,iCarthage,iIndia,iIndia], #Persia
+[iBabylonia,iBabylonia,iGreece,iCarthage,iCarthage], #Persia
 #[iEgypt,iGreece,iGreece,iCarthage,iCarthage], #Rome
 [], # rome for testing
 [], #Tamils
@@ -1567,11 +1567,11 @@ StabilityTypesTexts = ["TXT_KEY_STABILITY_CATEGORY_EXPANSION", "TXT_KEY_STABILIT
 
 #Stability Parameters
 iNumStabilityParameters = 23
-(iParameterCorePeriphery, iParameterCoreScore, iParameterPeripheryScore, iParameterRazedCities,	iParameterIsolationism,						# Expansion
-iParameterEconomicGrowth, iParameterTrade, iParameterMercantilism, iParameterCentralPlanning,									# Economy
-iParameterHappiness, iParameterCivicCombinations, iParameterCivicsEraTech, iParameterReligion,									# Domestic
-iParameterNeighbors, iParameterVassals, iParameterDefensivePacts, iParameterRelations, iParameterNationhood, iParameterTheocracy, iParameterMultilateralism,	# Foreign
-iParameterWarSuccess, iParameterWarWeariness, iParameterBarbarianLosses) = range(iNumStabilityParameters)							# Military
+(iParameterCorePeriphery, iParameterCoreScore, iParameterPeripheryScore, iParameterRecentExpansion, iParameterRazedCities, iParameterIsolationism,	# Expansion
+iParameterEconomicGrowth, iParameterTrade, iParameterMercantilism, iParameterCentralPlanning,								# Economy
+iParameterHappiness, iParameterCivicCombinations, iParameterCivicsEraTech, iParameterReligion,								# Domestic
+iParameterVassals, iParameterDefensivePacts, iParameterRelations, iParameterNationhood, iParameterTheocracy, iParameterMultilateralism,			# Foreign
+iParameterWarSuccess, iParameterWarWeariness, iParameterBarbarianLosses) = range(iNumStabilityParameters)						# Military
 
 #Regions
 iNumRegions = 38

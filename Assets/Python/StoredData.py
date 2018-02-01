@@ -17,6 +17,9 @@ class PlayerData:
 		self.iPlayer = iPlayer
 		
 		self.setup()
+		
+	def update(self, data):
+		self.__dict__.update(data)
 
 	def setup(self):
 	
@@ -77,12 +80,23 @@ class PlayerData:
 		
 		self.lWarTrend = [[] for _ in range(iNumTotalPlayersB)]		
 		self.lWarStartTurn = [0] * iNumTotalPlayersB
+		self.lLastWarSuccess = [0] * iNumTotalPlayersB
 		
 		self.lStabilityCategoryValues = [0, 0, 0, 0, 0]
 		
-	def resetWarTrend(self, iEnemy):
-		self.lWarTrend[iPlayer] = []
+	def resetEconomyTrend(self):
+		self.lEconomyTrend = []
 		
+	def resetHappinessTrend(self):
+		self.lHappinessTrend = []
+		
+	def resetWarTrend(self, iEnemy):
+		self.lWarTrend[iEnemy] = []
+	
+	def resetWarTrends(self):
+		for iEnemy in range(iNumPlayers):
+			self.resetWarTrend(iEnemy)
+	
 	def pushEconomyTrend(self, iValue):
 		self.lEconomyTrend.append(iValue)
 		if len(self.lEconomyTrend) > 10:
@@ -121,6 +135,11 @@ class GameData:
 		
 	def update(self, data):
 		self.__dict__.update(data)
+		
+		for player in self.players:
+			data = player.__dict__.copy()
+			player.setup()
+			player.update(data)
 
 	def setup(self):
 		self.players = [PlayerData(i) for i in range(iNumTotalPlayersB)]
@@ -151,7 +170,7 @@ class GameData:
 		self.iBetrayalTurns = 0
 		self.iRebelCiv = 0
 		
-		self.tTempFlippingCity = (0, 0)
+		self.lFlippingUnits = []
 		
 		self.bAlreadySwitched = False
 		self.bUnlimitedSwitching = False

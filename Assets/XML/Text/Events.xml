@@ -956,9 +956,9 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_EVENT_EARTHDAY_HELP_2</Tag>
-		<English>[ICON_BULLET]Persuade other nations to convert to [COLOR_HIGHLIGHT_TEXT]Environmentalism[COLOR_REVERT] (at least one civilization must have the ability to do so).</English>
+		<English>[ICON_BULLET]Persuade other nations to convert to [COLOR_HIGHLIGHT_TEXT]Public Welfare[COLOR_REVERT] (at least one civilization must have the ability to do so).</English>
 		<French>[ICON_BULLET]Persuader d'autres nations de se convertir &#224; l'[COLOR_HIGHLIGHT_TEXT]&#233;cologie[COLOR_REVERT] (au moins une civilisation doit poss&#233;der cette capacit&#233;).</French>
-		<German>[ICON_BULLET]&#220;berzeugt andere Nationen, zum [COLOR_HIGHLIGHT_TEXT]Umweltschutz[COLOR_REVERT] zu wechseln (mindestens eine Zivilisation muss dazu f&#228;hig sein).</German>
+		<German>[ICON_BULLET]&#220;berzeugt andere Nationen, zum [COLOR_HIGHLIGHT_TEXT]Wohlfahrtsstaat[COLOR_REVERT] zu wechseln (mindestens eine Zivilisation muss dazu f&#228;hig sein).</German>
 		<Italian>[ICON_BULLET]Persuadi altre nazioni a convertirsi all'[COLOR_HIGHLIGHT_TEXT]Ambientalismo[COLOR_REVERT] (almeno una delle altre civilt&#224; deve essere in grado di farlo).</Italian>
 		<Spanish>[ICON_BULLET]Convence a otras naciones de que se conviertan al [COLOR_HIGHLIGHT_TEXT]Ecologismo[COLOR_REVERT] (al menos una civilizaci&#243;n debe poseer la capacidad de hacerlo).</Spanish>
 	</TEXT>
@@ -996,9 +996,9 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_EVENT_ELITE_SWORDS_HELP_1</Tag>
-		<English>[PARAGRAPH:1]To complete this quest, you must train %d1 [COLOR_UNIT_TEXT]Swordsman[COLOR_REVERT] [NUM1:unit:units]. A source of Iron will be required.[PARAGRAPH:1]An additional reward option will be available if your civilization is operating the [COLOR_HIGHLIGHT_TEXT]Dynasticism[COLOR_REVERT] civic.[PARAGRAPH:1]You will fail this quest if a rival civilization completes it first, or if you arrive at the Middle Ages without having met the conditions.</English>
+		<English>[PARAGRAPH:1]To complete this quest, you must train %d1 [COLOR_UNIT_TEXT]Swordsman[COLOR_REVERT] [NUM1:unit:units]. A source of Iron will be required.[PARAGRAPH:1]An additional reward option will be available if your civilization is operating the [COLOR_HIGHLIGHT_TEXT]Monarchy[COLOR_REVERT] civic.[PARAGRAPH:1]You will fail this quest if a rival civilization completes it first, or if you arrive at the Middle Ages without having met the conditions.</English>
 		<French>[PARAGRAPH:1]Pour achevez cette qu&#234;te, vous devez entra&#238;ner %d1 [NUM1:unit&#233;:unit&#233;s] de [COLOR_UNIT_TEXT]Spadassins[COLOR_REVERT].Une source de fer sera n&#233;cessaire.[PARAGRAPH:1]Une option de r&#233;compense suppl&#233;mentaire sera disponible si votre civilisation utilise le [COLOR_HIGHLIGHT_TEXT]Droit H&#233;r&#233;ditaire[COLOR_REVERT].[PARAGRAPH:1]Vous &#233;chouerez si une civilisation rivale ach&#232;ve cette qu&#234;te avant vous ou si vous atteignez le Moyen Age sans avoir rempli les conditions de victoire.</French>
-		<German>[PARAGRAPH:1]Um diese Quest abzuschlie&#223;en, m&#252;ssen Sie %d1 [NUM1:Einheit:Einheiten] [COLOR_UNIT_TEXT]Schwertk&#228;mpfer[COLOR_REVERT] ausbilden. Dazu ist Eisen erforderlich.[PARAGRAPH:1]Sie erhalten eine zus&#228;tzliche Belohnung, wenn in Ihrer Zivilisation die Staatsform [COLOR_HIGHLIGHT_TEXT]Erbrecht[COLOR_REVERT] herrscht.[PARAGRAPH:1]Sie scheitern, wenn eine gegnerische Zivilisation die Quest vor Ihnen abschlie&#223;t oder wenn Sie das Mittelalter erreichen, ohne die Bedingungen erf&#252;llt zu haben.</German>
+		<German>[PARAGRAPH:1]Um diese Quest abzuschlie&#223;en, m&#252;ssen Sie %d1 [NUM1:Einheit:Einheiten] [COLOR_UNIT_TEXT]Schwertk&#228;mpfer[COLOR_REVERT] ausbilden. Dazu ist Eisen erforderlich.[PARAGRAPH:1]Sie erhalten eine zus&#228;tzliche Belohnung, wenn in Ihrer Zivilisation die Staatsform [COLOR_HIGHLIGHT_TEXT]Monarchie[COLOR_REVERT] herrscht.[PARAGRAPH:1]Sie scheitern, wenn eine gegnerische Zivilisation die Quest vor Ihnen abschlie&#223;t oder wenn Sie das Mittelalter erreichen, ohne die Bedingungen erf&#252;llt zu haben.</German>
 		<Italian>[PARAGRAPH:1]Per completare quest'impresa devi addestrare %d1 [COLOR_UNIT_TEXT][NUM1:Spadaccino:Spadaccini][COLOR_REVERT]. &#200; necessaria una fonte di ferro.[PARAGRAPH:1]Otterrai un'ulteriore ricompensa se la tua civilt&#224; ha come forma di governo preferita il [COLOR_HIGHLIGHT_TEXT]Governo ereditario[COLOR_REVERT].[PARAGRAPH:1]Fallirai nell'impresa se un'altra civilt&#224; la completa per prima, o se raggiungerai il Medioevo senza aver soddisfatto le condizioni.</Italian>
 		<Spanish>[PARAGRAPH:1]Para completar esta misi&#243;n, es necesario entrenar a %d1 [NUM1:unidad:unidades] de [COLOR_UNIT_TEXT]Soldados con espada[COLOR_REVERT]. Ser&#225; necesaria una fuente de hierro.[PARAGRAPH:1]Ser&#225; posible elegir una opci&#243;n de recompensa adicional si vuestra civilizaci&#243;n utiliza el principio de [COLOR_HIGHLIGHT_TEXT]Gobierno hereditario[COLOR_REVERT].[PARAGRAPH:1]Esta misi&#243;n fracasar&#225; si una civilizaci&#243;n rival la cumple antes o si se alcanza la Edad Media sin haber cumplido las condiciones.</Spanish>
 	</TEXT>
@@ -2167,6 +2167,11 @@
 		<German>Der Bau beginnt, sobald die Pl&#228;ne fertig sind.</German>
 		<Italian>La costruzione comincer&#224; appena saranno pronti i progetti.</Italian>
 		<Spanish>La construcci&#243;n comenzar&#225; en cuanto los planos est&#233;n terminados.</Spanish>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_EVENT_INTERSTATE_EFFECT</Tag>
+		<English>All Roads on flatland will be replaced by Highways.</English>
+		<German>Alle Straßen im Flachland werden durch Autobahnen ersetzt.</German>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_EVENT_JADE_1</Tag>
@@ -6850,5 +6855,30 @@
 		<Tag>TXT_KEY_EVENT_NOBLE_KNIGHTS_DONE_1</Tag>
 		<English>With such a large force of Lancers working together, additional training for these units can be achieved.</English>
 		<German>Mit einer so gro&#223;en Truppe Lanzenreiter k&#246;nnen diese Einheiten weiter ausgebildet werden.</German>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_EVENTTRIGGER_REINFORCED_HULL_1</Tag>
+		<English>Rumors abound that %s1_civ_adjective shipmasters are doing extensive refitting work on their war galley fleet.</English>
+		<German>Es gibt Ger&#252;chte, dass %s1:3_civ_adjective Schiffbauer ihre Kriegsgaleeren-Flotte &#252;berarbeiten.</German>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_EVENT_TRIGGER_REINFORCED_HULL_1</Tag>
+		<English>Our shipmasters have devised a way to reinforce the hulls of our war galleys. This will help with both ramming and being rammed.</English>
+		<German>Unsere Schiffbauer haben einen Weg gefunden, den Rumpf unserer Kriegsgaleeren zu verst&#228;rken. Dies kommt uns sowohl beim Rammen als auch beim Gerammtwerden zugute.</German>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_EVENT_TRIGGER_WARSHIPS_1</Tag>
+		<English>Our naval commanders wish to prepare for war.[PARAGRAPH:1]If we train enough [COLOR_UNIT_TEXT]War Galley units[COLOR_REVERT], we could dominate the seas!</English>
+		<German>Unsere Marinekommandanten wollen sich auf den Krieg vorbereiten.[PARAGRAPH:1]Wenn wir gen&#252;gend [COLOR_UNIT_TEXT]Kriegsgaleeren[COLOR_REVERT]-Einheiten ausbilden, k&#246;nnten wir &#252;ber die Meere herrschen!</German>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_EVENT_WARSHIPS_1</Tag>
+		<English>Warships[PARAGRAPH:1]You are tasked by your naval commanders to build a sizable force of [COLOR_UNIT_TEXT]War Galleys[COLOR_REVERT].</English>
+		<German>Kriegsschiffe[PARAGRAPH:1]Eure Marinekommandanten verlangen von Euch, eine gro&#223;e [COLOR_UNIT_TEXT]Kriegsgaleeren[COLOR_REVERT]-Flotte aufzubauen.</German>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_EVENT_WARSHIPS_HELP_1</Tag>
+		<English>[PARAGRAPH:1]To complete this quest, you must train %d1 [COLOR_UNIT_TEXT]War Galley[COLOR_REVERT] [NUM1:unit:units].[PARAGRAPH:1]An additional reward option will be available if your civilization has built [COLOR_BUILDING_TEXT]%s2_building[COLOR_REVERT].[PARAGRAPH:1]You will fail this quest if a rival civilization completes it first, or if you arrive at the Renaissance without having met the conditions.</English>
+		<German>[PARAGRAPH:1]Um diese Quest abzuschlie&#223;en, m&#252;ssen Sie %d1 [COLOR_UNIT_TEXT]Kriegsgaleeren[COLOR_REVERT]-[NUM1:Einheit:Einheiten] ausbilden.[PARAGRAPH:1]Sie erhalten eine zus&#228;tzliche Belohnung, wenn Ihre Zivilisation das Geb&#228;ude [COLOR_BUILDING_TEXT]%s2_building[COLOR_REVERT] errichtet hat.[PARAGRAPH:1]Sie scheitern, wenn eine gegnerische Zivilisation die Quest vor Ihnen abschlie&#223;t oder wenn Sie die Renaissance erreichen, ohne die Bedingungen erf&#252;llt zu haben.</German>
 	</TEXT>
 </Civ4GameText>

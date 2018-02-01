@@ -31,6 +31,7 @@ import TraitUtil
 import UnitUpgradesGraph
 
 from RFCUtils import utils
+from Consts import *
 
 gc = CyGlobalContext()
 g_TraitUtilInitDone = False
@@ -675,6 +676,8 @@ class CvPediaMain(CvPediaScreen.CvPediaScreen):
 	def placeNationalWonders(self):
 		lBuildings = []
 		for iBuilding in xrange(gc.getNumBuildingInfos()):
+			if gc.getBuildingInfo(iBuilding).isGraphicalOnly():
+				continue
 			if utils.getBuildingCategory(iBuilding) == 3:
 				szDescription = gc.getBuildingInfo(iBuilding).getDescription().replace("The ", "")
 				lBuildings.append((szDescription, iBuilding))
@@ -913,9 +916,9 @@ class CvPediaMain(CvPediaScreen.CvPediaScreen):
 		UnitClassInfo = gc.getUnitClassInfo(UnitInfo.getUnitClassType())
 		iDefaultUnit = UnitClassInfo.getDefaultUnitIndex()
 
-		if UnitInfo.isGraphicalOnly():
+		if UnitInfo.isGraphicalOnly() and not utils.getBaseUnit(iUnit) in [iWarrior, iAxeman, iSlave]:
 			return -1
-		elif iDefaultUnit > -1 and iDefaultUnit != iUnit:
+		elif iDefaultUnit > -1 and iDefaultUnit != iUnit and not iUnit == iAztecSlave:
 			return 2
 		elif UnitInfo.getCombat() > 0 or UnitInfo.getAirCombat() != 0 or UnitInfo.isSuicide():
 			if not UnitInfo.isAnimal() and not UnitInfo.isFound():

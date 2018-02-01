@@ -1159,7 +1159,11 @@ bool CvTeam::canDeclareWar(TeamTypes eTeam) const
 	// Leoreth: protect recently spawned civs for ten turns to avoid early attack exploits
 	if (eTeam < NUM_MAJOR_PLAYERS)
 	{
-		if (GC.getGameINLINE().getGameTurn() - getScenarioStartTurn() > 10 && (GC.getGameINLINE().getGameTurn() - GET_PLAYER(GET_TEAM(eTeam).getLeaderID()).getBirthTurn() < 10 || GC.getGameINLINE().getGameTurn() - GET_PLAYER((PlayerTypes)eTeam).getLatestRebellionTurn() < 10))
+		int iGameTurn = GC.getGameINLINE().getGameTurn();
+
+		if (iGameTurn - getScenarioStartTurn() > getTurns(10) && // 10 turns after scenario start
+			iGameTurn - GET_PLAYER(getLeaderID()).getBirthTurn() > getTurns(10) && // 10 turns after player spawn
+			(iGameTurn - GET_PLAYER(GET_TEAM(eTeam).getLeaderID()).getBirthTurn() < getTurns(10) || iGameTurn - GET_PLAYER((PlayerTypes)eTeam).getLatestRebellionTurn() < getTurns(10))) // less than 10 turns after target spawn
 		{
 			return false;
 		}
@@ -2744,7 +2748,7 @@ int CvTeam::getCivilizationResearchModifier() const
 	if (getLeaderID() == CHINA)
 	{
 		if (GET_PLAYER(getLeaderID()).getCurrentEra() == ERA_MEDIEVAL) iCivModifier += 15;
-		if (GET_PLAYER(getLeaderID()).getCurrentEra() >= ERA_RENAISSANCE) iCivModifier += 30;
+		if (GET_PLAYER(getLeaderID()).getCurrentEra() >= ERA_RENAISSANCE) iCivModifier += 25;
 	}
 
 	return iCivModifier;
@@ -2890,19 +2894,19 @@ int CvTeam::getSpreadResearchModifier(TechTypes eTech) const
 	if (iCivsWithTech > iUpperThreshold) iSpreadModifier -= iBackwardsBonus * (iCivsWithTech - (iUpperThreshold-1)) / (iCivsAlive - iUpperThreshold);
 
 	// Leoreth: Chinese UP: no penalties for researching less widespread techs until the Renaissance
-	/*if (getID() == CHINA && GET_PLAYER((PlayerTypes)getID()).getCurrentEra() < ERA_RENAISSANCE)
+	if (getID() == CHINA && GET_PLAYER((PlayerTypes)getID()).getCurrentEra() < ERA_RENAISSANCE)
 	{
 		if (iSpreadModifier > 0) iSpreadModifier = 0;
-	}*/
+	}
 
 	iModifier += iSpreadModifier;
 
-	//Leoreth: new Chinese UP: techs not known by anyone get -20% cost
+	//Leoreth: new Chinese UP: techs not known by anyone get -25% cost
 	if (getID() == CHINA && GET_PLAYER((PlayerTypes)getID()).getCurrentEra() < ERA_RENAISSANCE)
 	{
 		if (iCivsWithTech == 0)
 		{
-			iModifier -= 20;
+			iModifier -= 25;
 		}
 	}
 
@@ -2919,28 +2923,36 @@ int CvTeam::getModernizationResearchModifier(TechTypes eTech) const
 	{
 		if (GC.getTechInfo((TechTypes)iI).getEra() <= ERA_MEDIEVAL && !isHasTech((TechTypes)iI))
 		{
-			bAllMedievalTechs = false;
-			break;
+			return 0;
 		}
 	}
 
-	if (bAllMedievalTechs)
-	{
-		int iCount = 0;
+	int iCount = 0;
 
-		for (int iI = 0; iI < NUM_MAJOR_PLAYERS; iI++)
+	for (int iI = 0; iI < NUM_MAJOR_PLAYERS; iI++)
+	{
+		TeamTypes eTeam = GET_PLAYER((PlayerTypes)iI).getTeam();
+		if (!GET_TEAM(eTeam).isHuman() && canContact(eTeam) && GET_TEAM(eTeam).isHasTech(eTech) && GET_TEAM(eTeam).AI_techTrade(eTech, getID(), true) == NO_DENIAL)
 		{
-			TeamTypes eTeam = GET_PLAYER((PlayerTypes)iI).getTeam();
-			if (!GET_TEAM(eTeam).isHuman() && canContact(eTeam) && GET_TEAM(eTeam).isHasTech(eTech) && GET_TEAM(eTeam).AI_techTrade(eTech, getID(), true) == NO_DENIAL)
+			if (!isAtWar(eTeam))
 			{
 				iCount++;
 			}
+			else
+			{
+				int iOurSuccess = AI_getWarSuccess(eTeam);
+				int iTheirSuccess = GET_TEAM(eTeam).AI_getWarSuccess(getID());
+				if (iOurSuccess - iTheirSuccess > 20 + 10 * GET_PLAYER(getLeaderID()).getCurrentEra() + std::max(iOurSuccess, iTheirSuccess) / 10)
+				{
+					iCount++;
+				}
+			}
 		}
+	}
 
-		if (iCount >= 3)
-		{
-			return -50;
-		}
+	if (iCount >= 3)
+	{
+		return -50;
 	}
 
 	return 0;
@@ -7032,4 +7044,17 @@ TeamTypes CvTeam::getMaster() const
 	}
 
 	return NO_TEAM;
+}
+
+bool CvTeam::isAtWarWithMajorPlayer() const
+{
+	for (int iI = 0; iI < MAX_TEAMS; iI++)
+	{
+		if (isAtWar((TeamTypes)iI) && !GET_PLAYER(GET_TEAM((TeamTypes)iI).getLeaderID()).isMinorCiv())
+		{
+			return true;
+		}
+	}
+
+	return false;
 }

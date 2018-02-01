@@ -552,7 +552,7 @@ def checkTurn(iGameTurn, iPlayer):
 	
 		# first goal: settle a great prophet in two Orthodox cities by 500 AD
 		if isPossible(iEthiopia, 0):
-			if countReligionSpecialistCities(iEthiopia, iOrthodoxy, iSpecialistGreatProphet):
+			if countReligionSpecialistCities(iEthiopia, iOrthodoxy, iSpecialistGreatProphet) >= 2:
 				win(iEthiopia, 0)
 				
 		if iGameTurn == getTurnForYear(500):
@@ -1596,19 +1596,19 @@ def onTechAcquired(iPlayer, iTech):
 				
 		# third Japanese goal: be the first to discover ten Global and ten Digital technologies
 		if isPossible(iJapan, 2):
-			if countFirstDiscovered(iPlayer, iGlobal) >= 10 and countFirstDiscovered(iPlayer, iDigital) >= 10:
+			if countFirstDiscovered(iPlayer, iGlobal) >= 8 and countFirstDiscovered(iPlayer, iDigital) >= 8:
 				if iPlayer == iJapan: win(iJapan, 2)
 				else: lose(iJapan, 2)
 				
 		# third English goal: be the first to discover ten Renaissance and ten Industrial technologies
 		if isPossible(iEngland, 2):
-			if countFirstDiscovered(iPlayer, iRenaissance) >= 10 and countFirstDiscovered(iPlayer, iIndustrial) >= 10:
+			if countFirstDiscovered(iPlayer, iRenaissance) >= 8 and countFirstDiscovered(iPlayer, iIndustrial) >= 8:
 				if iPlayer == iEngland: win(iEngland, 2)
 				else: lose(iEngland, 2)
 				
 		# third German goal: be the first to discover ten Industrial and ten Global technologies
 		if isPossible(iGermany, 2):
-			if countFirstDiscovered(iPlayer, iIndustrial) >= 10 and countFirstDiscovered(iPlayer, iGlobal) >= 10:
+			if countFirstDiscovered(iPlayer, iIndustrial) >= 8 and countFirstDiscovered(iPlayer, iGlobal) >= 8:
 				if iPlayer == iGermany: win(iGermany, 2)
 				else: lose(iGermany, 2)
 			
@@ -1917,9 +1917,10 @@ def onPeaceBrokered(iBroker, iPlayer1, iPlayer2):
 
 	# third Canadian goal: end twelve wars through diplomacy by 2000 AD
 	if iBroker == iCanada:
-		data.iCanadianPeaceDeals += 1
-		if data.iCanadianPeaceDeals >= 12:
-			win(iCanada, 2)
+		if isPossible(iCanada, 2):
+			data.iCanadianPeaceDeals += 1
+			if data.iCanadianPeaceDeals >= 12:
+				win(iCanada, 2)
 			
 def onBlockade(iPlayer, iGold):
 
@@ -3527,7 +3528,7 @@ def getUHVHelp(iPlayer, iGoal):
 		elif iGoal == 2:
 			iGlobalTechs = countFirstDiscovered(iJapan, iGlobal)
 			iDigitalTechs = countFirstDiscovered(iJapan, iDigital)
-			aHelp.append(getIcon(iGlobalTechs >= 10) + localText.getText("TXT_KEY_VICTORY_TECHS_FIRST_DISCOVERED", (gc.getEraInfo(iGlobal).getText(), iGlobalTechs, 10)) + ' ' + getIcon(iDigitalTechs >= 10) + localText.getText("TXT_KEY_VICTORY_TECHS_FIRST_DISCOVERED", (gc.getEraInfo(iDigital).getText(), iDigitalTechs, 10)))
+			aHelp.append(getIcon(iGlobalTechs >= 8) + localText.getText("TXT_KEY_VICTORY_TECHS_FIRST_DISCOVERED", (gc.getEraInfo(iGlobal).getText(), iGlobalTechs, 8)) + ' ' + getIcon(iDigitalTechs >= 8) + localText.getText("TXT_KEY_VICTORY_TECHS_FIRST_DISCOVERED", (gc.getEraInfo(iDigital).getText(), iDigitalTechs, 8)))
 			
 	elif iPlayer == iVikings:
 		if iGoal == 0:
@@ -3589,7 +3590,7 @@ def getUHVHelp(iPlayer, iGoal):
 			iCounter += countCitySpecialists(iMoors, (51, 41), iSpecialistGreatProphet)
 			iCounter += countCitySpecialists(iMoors, (51, 41), iSpecialistGreatScientist)
 			iCounter += countCitySpecialists(iMoors, (51, 41), iSpecialistGreatEngineer)
-			aHelp.append(getIcon(bMezquita) + localText.getText("TXT_KEY_BUILDING_LA_MEZQUITA", ()) + ' ' + getIcon(iCounter >= 4) + localText.getText("TXT_KEY_VICTORY_GREAT_PEOPLE_IN_CITY_MOORS", ("Cordoba", iCounter, 5)))
+			aHelp.append(getIcon(bMezquita) + localText.getText("TXT_KEY_BUILDING_LA_MEZQUITA", ()) + ' ' + getIcon(iCounter >= 4) + localText.getText("TXT_KEY_VICTORY_GREAT_PEOPLE_IN_CITY_MOORS", ("Cordoba", iCounter, 4)))
 		elif iGoal == 2:
 			iRaidGold = data.iMoorishGold
 			aHelp.append(getIcon(iRaidGold >= utils.getTurns(3000)) + localText.getText("TXT_KEY_VICTORY_PIRACY", (iRaidGold, utils.getTurns(3000))))
@@ -3654,7 +3655,7 @@ def getUHVHelp(iPlayer, iGoal):
 		elif iGoal == 2:
 			iRenaissanceTechs = countFirstDiscovered(iEngland, iRenaissance)
 			iIndustrialTechs = countFirstDiscovered(iEngland, iIndustrial)
-			aHelp.append(getIcon(iRenaissanceTechs >= 10) + localText.getText("TXT_KEY_VICTORY_TECHS_FIRST_DISCOVERED", (gc.getEraInfo(iRenaissance).getText(), iRenaissanceTechs, 10)) + ' ' + getIcon(iIndustrialTechs >= 10) + localText.getText("TXT_KEY_VICTORY_TECHS_FIRST_DISCOVERED", (gc.getEraInfo(iIndustrial).getText(), iIndustrialTechs, 10)))
+			aHelp.append(getIcon(iRenaissanceTechs >= 8) + localText.getText("TXT_KEY_VICTORY_TECHS_FIRST_DISCOVERED", (gc.getEraInfo(iRenaissance).getText(), iRenaissanceTechs, 8)) + ' ' + getIcon(iIndustrialTechs >= 8) + localText.getText("TXT_KEY_VICTORY_TECHS_FIRST_DISCOVERED", (gc.getEraInfo(iIndustrial).getText(), iIndustrialTechs, 8)))
 
 	elif iPlayer == iHolyRome:
 		if iGoal == 0:
@@ -3874,7 +3875,7 @@ def getUHVHelp(iPlayer, iGoal):
 		elif iGoal == 2:
 			iIndustrialTechs = countFirstDiscovered(iGermany, iIndustrial)
 			iGlobalTechs = countFirstDiscovered(iGermany, iGlobal)
-			aHelp.append(getIcon(iIndustrialTechs >= 10) + localText.getText("TXT_KEY_VICTORY_TECHS_FIRST_DISCOVERED", (gc.getEraInfo(iIndustrial).getText(), iIndustrialTechs, 10)) + ' ' + getIcon(iGlobalTechs >= 10) + localText.getText("TXT_KEY_VICTORY_TECHS_FIRST_DISCOVERED", (gc.getEraInfo(iGlobal).getText(), iGlobalTechs, 10)))
+			aHelp.append(getIcon(iIndustrialTechs >= 8) + localText.getText("TXT_KEY_VICTORY_TECHS_FIRST_DISCOVERED", (gc.getEraInfo(iIndustrial).getText(), iIndustrialTechs, 8)) + ' ' + getIcon(iGlobalTechs >= 8) + localText.getText("TXT_KEY_VICTORY_TECHS_FIRST_DISCOVERED", (gc.getEraInfo(iGlobal).getText(), iGlobalTechs, 8)))
 
 	elif iPlayer == iAmerica:
 		if iGoal == 0:

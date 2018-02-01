@@ -11,11 +11,8 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UP_AME</Tag>
-		<English>Additional happiness from running Republic, Capitalism and Free Market</English>
-		<French>Les populations des autres civilisations migrent vers les villes am&#233;ricaines</French>
-		<German>Zus&#228;tzliche Zufriedenheit unter Republik, Kapitalismus und Freiem Markt</German>
-		<Italian>La popolazione migra dalle altre civilt&#224; nelle citt&#224; americane</Italian>
-		<Spanish>La poblaci&#243;n emigra de otras civilizaciones a las ciudades estadounidenses</Spanish>
+		<English>Additional happiness from running Democracy, Constitution, Individualism and Free Enterprise</English>
+		<German>Zus&#228;tzliche Zufriedenheit unter Demokratie, Verfassung, Individualismus und Freiem Unternehmertum</German>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_CIVIC_AMERICAN_UP_HAPPINESS</Tag>
@@ -549,11 +546,8 @@
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UP_PER</Tag>
-		<English>No stability penalties for controlling cities with foreign culture</English>
-		<French>+2 points de stabilit&#233; par ville conquise</French>
-		<German>Keine Stabilit&#228;ts-Mali f&#252;r die Kontrolle von St&#228;dten mit fremder Kultur</German>
-		<Italian>+2 punti stabilit&#224; addizionali per ogni citt&#224; conquistata</Italian>
-		<Spanish>+2 puntos de estabilidad adicionales por cada ciudad conquistada</Spanish>
+		<English>Additional stability for recently conquered cities</English>
+		<German>Zusätzliche Stabilität für kürzlich eroberte Städte</German>
 	</TEXT>
 	<TEXT>
 		<Tag>TXT_KEY_UP_PLY_TITLE</Tag>

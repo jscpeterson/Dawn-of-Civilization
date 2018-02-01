@@ -229,7 +229,7 @@ tStabilitySymbols = (
 FontSymbols.UNSTABLE_CHAR,
 FontSymbols.UNSTABLE_CHAR,
 FontSymbols.STABLE_CHAR,
-FontSymbols.STABLE_CHAR,
+FontSymbols.SOLID_CHAR,
 FontSymbols.SOLID_CHAR,)
 
 class CvMainInterface:
@@ -320,6 +320,10 @@ class CvMainInterface:
 		WidgetUtil.createWidget("WIDGET_ESPIONAGE_SELECT_CITY")
 		WidgetUtil.createWidget("WIDGET_ESPIONAGE_SELECT_MISSION")
 		WidgetUtil.createWidget("WIDGET_GO_TO_CITY")
+		
+		WidgetUtil.createWidget("WIDGET_ESPIONAGE_SELECT_PLAYER")
+		WidgetUtil.createWidget("WIDGET_ESPIONAGE_SELECT_CITY")
+		WidgetUtil.createWidget("WIDGET_ESPIONAGE_SELECT_MISSION")
 
 		
 		
@@ -813,7 +817,7 @@ class CvMainInterface:
 		szGameDataList = []
 
 		xCoord = 268 + (xResolution - 1024) / 2
-		screen.addStackedBarGFC( "ResearchBar", xCoord, 2, 487, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_RESEARCH, -1, -1 )
+		screen.addStackedBarGFC( "ResearchBar", xCoord, 2, 487, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_RESEARCH, gc.getActivePlayer().getCurrentResearch(), -1 )
 		screen.setStackedBarColors( "ResearchBar", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_RESEARCH_STORED") )
 		screen.setStackedBarColors( "ResearchBar", InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_RESEARCH_RATE") )
 		screen.setStackedBarColors( "ResearchBar", InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getInfoTypeForString("COLOR_EMPTY") )
@@ -866,7 +870,7 @@ class CvMainInterface:
 		screen.hide( "GreatGeneralBar-w" )
 
 		xCoord += 6 + 84
-		screen.addStackedBarGFC( "ResearchBar-w", xCoord, 2, 487, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_RESEARCH, -1, -1 )
+		screen.addStackedBarGFC( "ResearchBar-w", xCoord, 2, 487, iStackBarHeight, InfoBarTypes.NUM_INFOBAR_TYPES, WidgetTypes.WIDGET_RESEARCH, gc.getActivePlayer().getCurrentResearch(), -1 )
 		screen.setStackedBarColors( "ResearchBar-w", InfoBarTypes.INFOBAR_STORED, gc.getInfoTypeForString("COLOR_RESEARCH_STORED") )
 		screen.setStackedBarColors( "ResearchBar-w", InfoBarTypes.INFOBAR_RATE, gc.getInfoTypeForString("COLOR_RESEARCH_RATE") )
 		screen.setStackedBarColors( "ResearchBar-w", InfoBarTypes.INFOBAR_RATE_EXTRA, gc.getInfoTypeForString("COLOR_EMPTY") )
@@ -5213,7 +5217,7 @@ class CvMainInterface:
 
 												if ePlayer < iNumPlayers:
 													iStabilityLevel = data.getStabilityLevel(ePlayer)
-													if iStabilityLevel > iStabilityStable: cStab = unichr(CyGame().getSymbolID(FontSymbols.SOLID_CHAR))
+													if iStabilityLevel > iStabilityShaky: cStab = unichr(CyGame().getSymbolID(FontSymbols.SOLID_CHAR))
 													elif iStabilityLevel > iStabilityUnstable: cStab = unichr(CyGame().getSymbolID(FontSymbols.STABLE_CHAR))
 													else: cStab = unichr(CyGame().getSymbolID(FontSymbols.UNSTABLE_CHAR))
 													szBuffer += cStab
@@ -5662,9 +5666,6 @@ class CvMainInterface:
 		if inputClass.getNotifyCode() == 11 and inputClass.getData1() == 10001:
 			utils.doByzantineBribery(g_pSelectedUnit)
 		# Leoreth: end
-
-		if inputClass.getNotifyCode() == NotifyCode.NOTIFY_CLICKED and inputClass.getFunctionName() == "StabilityOverlay":
-			utils.toggleStabilityOverlay()
 
 		return 0
 	

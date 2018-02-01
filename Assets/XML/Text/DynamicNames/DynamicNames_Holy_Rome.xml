@@ -122,6 +122,10 @@
 		</Spanish>
 	</TEXT>
 	<TEXT>
+		<Tag>TXT_KEY_CIV_AUSTRIA_DEFAULT</Tag>
+		<English>Archduchy of %s1</English>
+	</TEXT>
+	<TEXT>
 		<Tag>TXT_KEY_CIV_AUSTRIA_SHORT_DESC</Tag>
 		<English>Austria</English>
 	</TEXT>
@@ -156,5 +160,13 @@
 	<TEXT>
 		<Tag>TXT_KEY_CIV_AUSTRIAN_ITALY</Tag>
 		<English>Grand Duchy of Tuscany</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CIV_HOLY_ROME_HUNGARY</Tag>
+		<English>Hungary</English>
+	</TEXT>
+	<TEXT>
+		<Tag>TXT_KEY_CIV_HOLY_ROME_HUNGARIAN</Tag>
+		<English>Hungarian</English>
 	</TEXT>
 </Civ4GameText>
