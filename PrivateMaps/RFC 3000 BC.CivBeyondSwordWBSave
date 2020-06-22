@@ -19534,7 +19534,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=41,y=72
-	BonusType=BONUS_IRON
+	BonusType=BONUS_URANIUM
 	TerrainType=TERRAIN_TUNDRA
 	PlotType=1
 EndPlot
@@ -47561,7 +47561,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=104,y=35
-	TerrainType=TERRAIN_PLAINS
+	TerrainType=TERRAIN_GRASS
 	PlotType=2
 EndPlot
 BeginPlot
@@ -47578,14 +47578,14 @@ BeginPlot
 	RiverWEDirection=1
 	BonusType=BONUS_INCENSE
 	FeatureType=FEATURE_RAINFOREST, FeatureVariety=0
-	TerrainType=TERRAIN_GRASS
+	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 EndPlot
 BeginPlot
 	x=104,y=38
 	BonusType=BONUS_GEMS
 	FeatureType=FEATURE_RAINFOREST, FeatureVariety=0
-	TerrainType=TERRAIN_GRASS
+	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 EndPlot
 BeginPlot
@@ -48020,12 +48020,12 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=105,y=35
-	TerrainType=TERRAIN_GRASS
+	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 EndPlot
 BeginPlot
 	x=105,y=36
-	TerrainType=TERRAIN_GRASS
+	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 EndPlot
 BeginPlot
@@ -48476,13 +48476,13 @@ BeginPlot
 	x=106,y=34
 	isNOfRiver
 	RiverWEDirection=1
-	TerrainType=TERRAIN_GRASS
+	TerrainType=TERRAIN_PLAINS
 	PlotType=2
 EndPlot
 BeginPlot
 	x=106,y=35
 	BonusType=BONUS_GOLD
-	TerrainType=TERRAIN_GRASS
+	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 EndPlot
 BeginPlot
@@ -48496,7 +48496,7 @@ BeginPlot
 	x=106,y=37
 	isNOfRiver
 	RiverWEDirection=1
-	TerrainType=TERRAIN_GRASS
+	TerrainType=TERRAIN_PLAINS
 	PlotType=1
 EndPlot
 BeginPlot
@@ -49374,7 +49374,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=108,y=30
-	BonusType=BONUS_IRON
+	BonusType=BONUS_GEMS
+	BonusVarietyType=BONUS_GEMS_SAPPHIRES
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 EndPlot
@@ -49840,7 +49841,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=109,y=30
-	BonusType=BONUS_RARE_EARTHS
+	BonusType=BONUS_IRON
 	FeatureType=FEATURE_RAINFOREST, FeatureVariety=0
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
@@ -52199,8 +52200,8 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=114,y=53
-	TerrainType=TERRAIN_DESERT
-	PlotType=1
+	TerrainType=TERRAIN_SALTFLAT
+	PlotType=2
 EndPlot
 BeginPlot
 	x=114,y=54
@@ -56346,6 +56347,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=123,y=45
+	BonusType=BONUS_ALUMINUM
 	TerrainType=TERRAIN_GRASS
 	PlotType=1
 EndPlot
@@ -56882,6 +56884,7 @@ BeginPlot
 EndPlot
 BeginPlot
 	x=124,y=54
+	BonusType=BONUS_ALUMINUM
 	FeatureType=FEATURE_FOREST, FeatureVariety=0
 	TerrainType=TERRAIN_PLAINS
 	PlotType=2
