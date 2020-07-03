@@ -362,20 +362,21 @@
 			<iSoundtrackSpace>80</iSoundtrackSpace>
 			<bFirstSoundtrackFirst>0</bFirstSoundtrackFirst>
 			<EraInfoSoundtracks>
-				<EraInfoSoundtrack>AS2D_ANFORTAS_WOUND</EraInfoSoundtrack>
-				<EraInfoSoundtrack>AS2D_CHAIRMAN_DANCES</EraInfoSoundtrack>
-				<EraInfoSoundtrack>AS2D_CHCONNE</EraInfoSoundtrack>
-				<EraInfoSoundtrack>AS2D_CHRISTIAN_ZEAL</EraInfoSoundtrack>
-				<EraInfoSoundtrack>AS2D_COMMON_TONES</EraInfoSoundtrack>
-				<EraInfoSoundtrack>AS2D_GRAND_PIANOLA_1</EraInfoSoundtrack>
-				<EraInfoSoundtrack>AS2D_GRAND_PIANOLA_2</EraInfoSoundtrack>
-				<EraInfoSoundtrack>AS2D_HARMONIELEHRE</EraInfoSoundtrack>
-				<EraInfoSoundtrack>AS2D_HYMING_SLEWS</EraInfoSoundtrack>
-				<EraInfoSoundtrack>AS2D_LOOPS_AND_VERSES</EraInfoSoundtrack>
-				<EraInfoSoundtrack>AS2D_MEISTER_ECKHARDT</EraInfoSoundtrack>
-				<EraInfoSoundtrack>AS2D_SHAKING_AND_TREMBLING</EraInfoSoundtrack>
-				<EraInfoSoundtrack>AS2D_THE_PEOPLE_ARE_HEROES</EraInfoSoundtrack>
-				<EraInfoSoundtrack>AS2D_TROMBA_LONTANA</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_LA_MER_1</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_LA_MER_2</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_LA_MER_3</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_PRELUDE_APRES_MIDI_FAUNE</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_DAPHNIS_CHLOE</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_FERIA</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_RAVEL_QUARTET_1</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_RAVEL_QUARTET_2</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_RAVEL_QUARTET_3</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_RAVEL_QUARTET_4</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_RAVEL_PIANO_CONCERTO</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_I_GOT_RHYTHM</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_RHAPSODY_IN_BLUE</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_PLANETS_MARS</EraInfoSoundtrack>
+				<EraInfoSoundtrack>AS2D_PLANETS_VENUS</EraInfoSoundtrack>
 			</EraInfoSoundtracks>
 			<CitySoundscapes>
 				<CitySoundscape>
